@@ -1,0 +1,115 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 <strong>Your Application</strong>
+        br
+        // application form
+        form(method='POST' action='/apply')
+          div.form-group
+            label(for='accountType') Please Select A Desired Account Type:
+            select#accountType.select.form-control(name='accountType', onchange='javascript:create_div(this.value);', style="width: 170px;")
+              option(value='') -- Select --
+              option(value='savings') Savings
+              option(value='checking') Checking
+              option(value='moneyMarket') Money Market
+              option(value='cd') CD
+              option(value='ira') IRA CD
+          #div_main
+          br
+          #div_main2
+          br
+          div.form-group
+            label(for='paymentMethod') Please specify payment method for initial deposit:
+            select#accountType.select.form-control(name='paymentMethod', style="width: 120px;")
+              option(value='0') Select
+              option(value='Credit') Credit
+              option(value='Debit') Debit
+              option(value='Check') Check
+          div.form-group.col-md-6
+            label(for='cardNumber') Card Number
+            input#cardNumber.form-control(type='text', name='cardNumber', placeholder="Card Number")
+          div.form-group
+            label(for='securityCode') CVV
+            input#securityCode.form-control(type='text', name='securityCode', placeholder="CVV", style="width: 70px;")
+          br
+          h4 <strong>Address Information:</strong>
+          div.form-group
+            label(for='address1')
+            input#address1.form-control(type='text', name='address1', placeholder="Address Line 1")
+          div.form-group
+            label(for='address2')
+            input#address2.form-control(type='text', name='address2', placeholder="Address Line 2")
+          div.form-group
+            .form-group.col-md-5
+              label(for='inputCity') City
+              input#inputCity.form-control(type='text', name='inputCity',style="width: 175px;")
+            .form-group.col-md-2
+              label(for='inputState') State
+              input#inputState.form-control(type='text', name='inputState', style="width: 60px;")
+            .form-group.col-md-3
+              label(for='inputZip') Zip
+              input#inputZip.form-control(type='text', name= 'inputZip', style="width: 90px;")
+          br
+          h4 <strong>Employment Information:</strong>
+          div.form-group
+            label(for='occupation')
+            input#occupation.form-control(type='text', name='occupation', placeholder="Job Title", style="width: 250px;")
+          div.form-group
+            label(for='company')
+            input#company.form-control(type='text', name='company', placeholder="Company", style="width: 250px;")
+          div.form-group
+            label(for='income') Yearly Income
+            select#income.select.form-control(name='income', style="width: 350px;")
+              option(value='0') Select
+              option(value='1') Under $20,0000/year
+              option(value='2') Between $20,0000 - $30,0000/year
+              option(value='3') Between $30,0000 - $40,0000/year
+              option(value='4') Between $40,0000 - $60,0000/year
+              option(value='5') Between $60,0000 - $80,0000/year
+              option(value='6') Between $80,0000 - $100,0000/year
+              option(value='7') Above $100,0000/year
+          br
+          h4 <strong>Upload Documentation:</strong>
+          div.form-group
+            label(for='proofFile') Please upload proof of address and income as pdf files:
+            input#proofFile.form-control-file(type='file', name = 'proofFile')
+
+          br
+          button.btn.btn-primary(type='submit') Apply
+          
+          script.
+            function create_div(value)
+            {
+                let amt;
+                let acct;
+                if (value == "savings"){
+                    amt = "500";
+                    acct = "Savings";
+                }
+                else if (value == "checking"){
+                    amt = "250";
+                    acct = "Checking";
+                }
+                else if (value == "moneyMarket"){
+                    amt = "750";
+                    acct = "Money Market";
+                }
+                else if (value == "cd"){
+                    amt = "200";
+                    acct = "CD";
+                }
+                else if (value =='ira'){
+                    amt = '200';
+                    acct = 'IRA CD';
+                }
+                else{
+                    amt = "200";
+                    acct = '';
+                }
+                document.getElementById('div_main').innerHTML = "Note: A minimum of $" + amt + " is required to open a new " + acct + " account.";
+                document.getElementById('div_main2').innerHTML = `<label for=\"amount\">Amount ($)<input class=\"form-control\" id=\"amount\" type=\"text\" name=\"${value}Amount\" placeholder=\"$\" style=\"width: 100px;\"/></label>`;
+            }
+          

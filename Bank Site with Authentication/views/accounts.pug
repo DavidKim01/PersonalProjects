@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .main.container.clearfix
+    .row
+      .col-md-8.col-md-offset-2
+        h2.display-4
+          img.avatar.img-circle.hidden-xs-down(src='/images/avatar.png', alt='avatar')
+          | Welcome, #{firstname} #{lastname}    
+        br
+        h2 Your Accounts and Balances:
+        br
+        if accountSavings
+          h3 #{accountSavings} #{'$'+savingsAmount}
+          br
+        if accountChecking
+          h3 #{accountChecking} #{'$'+checkingAmount}
+          br
+        if accountMoneyMarket
+          h3 #{accountMoneyMarket} #{'$'+moneyMarketAmount}
+          br
+        if accountCd
+          h3 #{accountCd} #{'$'+cdAmount}
+          br
+        if accountIraCd
+          h3 #{accountIraCd} #{'$'+iraAmount}
+          br
+        a.btn.btn-info.btn-lg(href='/apply', title='Click here to add a new product.') Add a New Product!

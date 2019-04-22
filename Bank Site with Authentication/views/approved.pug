@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .main.container.clearfix
+    .row
+      .col-md-8.col-md-offset-2
+        h2.display-4
+          | Congratulations, #{firstname}! 
+        h2.display-4
+          | You have been approved!  
+        br
+        a.btn.btn-info.btn-lg(href='/accounts', title='Click here to view your balances!') View Your Accounts
+        br
+        br
+        h2 Or:
+        br
+        a.btn.btn-info.btn-lg(href='/apply', title='Click here to add a new product.') Add Another Product
