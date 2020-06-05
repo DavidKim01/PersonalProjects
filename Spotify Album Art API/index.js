@@ -13,8 +13,8 @@ const search_results_cache_dir = './search-results-cache/'; //used later for sea
 const request_authentication = function (user_input, res){
 	//Note: credentials are imported via a file import on line 5 to avoid hard coding them into our index.js like below (now commented out):
 	// let post_data = querystring.stringify({
-	// 	"client_id": "9acbad6261f24405b42c2ee12afc923b",
-	// 	"client_secret": "e8395a3ad60742ecb5b04a8b32b95197",
+	// 	"client_id": "1",
+	// 	"client_secret": "1",
 	// 	"grant_type": "client_credentials"
 	// });
 
