@@ -1,2 +1,2 @@
 # PersonalProjects
-Some projects to practice front-end and programming concepts
+Some projects to practice full stack software engineering
